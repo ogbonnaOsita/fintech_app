@@ -50,8 +50,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: 'Me',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.credit_card_outlined),
-            activeIcon: Icon(Icons.credit_card),
+            icon: Icon(Icons.settings_outlined),
+            activeIcon: Icon(Icons.settings),
             label: 'Cards',
           ),
 

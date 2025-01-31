@@ -11,9 +11,8 @@ class GeneralSettingsScreen extends StatefulWidget {
 }
 
 class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
-  bool defaultNotificationActions = false;
-  bool billsCalendar = false;
-  bool creditScoreCalendar = false;
+  bool fingerprint = false;
+  bool darkModeToggle = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +33,11 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
             ListTile(
+              contentPadding: EdgeInsets.all(0.0),
               title: const Text(
                 'Manage Beneficiaries',
                 style: TextStyle(
@@ -49,6 +49,7 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
               onTap: () {},
             ),
             ListTile(
+              contentPadding: EdgeInsets.all(0.0),
               title: const Text(
                 'Change Authorization',
                 style: TextStyle(
@@ -60,6 +61,7 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
               onTap: () {},
             ),
             ListTile(
+              contentPadding: EdgeInsets.all(0.0),
               title: const Text(
                 'Transfer Limits',
                 style: TextStyle(
@@ -71,6 +73,7 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
               onTap: () {},
             ),
             ListTile(
+              contentPadding: EdgeInsets.all(0.0),
               title: const Text(
                 'Change Pin',
                 style: TextStyle(
@@ -85,17 +88,17 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
             _buildSettingItem(
               'Fingerprint',
               'Enable or disable login with fingerprint...',
-              billsCalendar,
+              fingerprint,
               (value) {
-                setState(() => billsCalendar = value);
+                setState(() => fingerprint = value);
               },
             ),
             _buildSettingItem(
               'Dark Mode Toggle',
               'Switch between light and dark mode...',
-              creditScoreCalendar,
+              darkModeToggle,
               (value) {
-                setState(() => creditScoreCalendar = value);
+                setState(() => darkModeToggle = value);
               },
             ),
           ],
@@ -116,7 +119,6 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: 8),
         Row(
           children: [
             Expanded(
