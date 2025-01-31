@@ -1,3 +1,4 @@
+import 'package:fintech_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class GeneralSettingsScreen extends StatefulWidget {
@@ -19,26 +20,17 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
         leading: IconButton(
-          icon: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.blue[700],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Icon(Icons.arrow_back, color: Colors.white),
-          ),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          'General Setting',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.black),
+        elevation: 0,
+        forceMaterialTransparency: true,
+        title: Text(
+          'General Settings',
+          style: TextStyle(fontWeight: FontWeight.w600, color: Constants.kSecondaryColor),
         ),
       ),
       body: Padding(
@@ -46,9 +38,8 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
         child: Column(
           children: [
             ListTile(
-              leading: Icon(Icons.notifications_outlined, color: Colors.red[200], size: 28),
               title: const Text(
-                'Default Notification Actions',
+                'Manage Beneficiaries',
                 style: TextStyle(
                   color: Color(0xFF1A237E),
                   fontWeight: FontWeight.w600,
@@ -58,9 +49,8 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
               onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.settings, color: Colors.red[200], size: 28),
               title: const Text(
-                'Manage Notifications',
+                'Change Authorization',
                 style: TextStyle(
                   color: Color(0xFF1A237E),
                   fontWeight: FontWeight.w600,
@@ -69,26 +59,40 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
               trailing: Icon(Icons.chevron_right, color: Colors.grey[400]),
               onTap: () {},
             ),
-            const SizedBox(height: 20),
-            _buildSettingItem(
-              'Default Notification Actions',
-              'You want to receive bill reminders before a bill is due.',
-              defaultNotificationActions,
-              (value) {
-                setState(() => defaultNotificationActions = value);
-              },
+            ListTile(
+              title: const Text(
+                'Transfer Limits',
+                style: TextStyle(
+                  color: Color(0xFF1A237E),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              trailing: Icon(Icons.chevron_right, color: Colors.grey[400]),
+              onTap: () {},
             ),
+            ListTile(
+              title: const Text(
+                'Change Pin',
+                style: TextStyle(
+                  color: Color(0xFF1A237E),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              trailing: Icon(Icons.chevron_right, color: Colors.grey[400]),
+              onTap: () {},
+            ),
+            const SizedBox(height: 40),
             _buildSettingItem(
-              'Bills Calendar',
-              'You want to receive bill reminder emails before a bill...',
+              'Fingerprint',
+              'Enable or disable login with fingerprint...',
               billsCalendar,
               (value) {
                 setState(() => billsCalendar = value);
               },
             ),
             _buildSettingItem(
-              'Credit Score Calendar',
-              'You want to sync credit score reminders to your device cale...',
+              'Dark Mode Toggle',
+              'Switch between light and dark mode...',
               creditScoreCalendar,
               (value) {
                 setState(() => creditScoreCalendar = value);
@@ -127,7 +131,7 @@ class _GeneralSettingsScreenState extends State<GeneralSettingsScreen> {
             Switch(
               value: value,
               onChanged: onChanged,
-              activeColor: Colors.red[200],
+              activeColor: Colors.green[700],
             ),
           ],
         ),
